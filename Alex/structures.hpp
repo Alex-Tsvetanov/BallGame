@@ -1,6 +1,9 @@
 struct range
 {
 	int from, to;
+	range () {}
+	range (int f, int t) : from (f), to (t)
+	{}
 };
 
 bool operator > (range a, range b)
@@ -16,7 +19,6 @@ bool operator < (range a, range b)
 struct game_rules
 {
 	int number_of_balls;
-	std::set <int> rules;
 	std::set <range> all_ranges;
 };
 
@@ -24,15 +26,9 @@ struct game_core : private game_rules
 {
 public:
 	template<typename T>
-	game_core& set_rules (T x)
-	{
-		rules = std::set <int> (std::begin (x), std::end (x));
-		return *this;
-	}
-	template<typename T>
 	game_core& set_ranges (T x)
 	{
-		rules = std::set <int> (std::begin (x), std::end (x));
+		all_ranges = std::set <range> (std::begin (x), std::end (x));
 		return *this;
 	}
 	game_core& set_balls (int x)
@@ -40,14 +36,14 @@ public:
 		number_of_balls = x;
 		return *this;
 	}
-	bool valid (int get) const 
+	bool valid (int get, range r) const 
 	{
-		return rules.find (get) == rules.end ();
+		return !(r.from <= get and get <= r.to);
 	}
 
-	void doTurn (int player, int get)
+	void doTurn (int player, int get, range r)
 	{
-		if (valid (get))
+		if (valid (get, r))
 		{
 			text ("Player %d lose!", player);
 			text ("Invalid turn. It get %d!", get);
@@ -84,7 +80,6 @@ public:
 	{
 		game_rules a;
 		a.number_of_balls = number_of_balls;
-		a.rules = rules;
 		a.all_ranges = all_ranges;
 		return a;
 	}

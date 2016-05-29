@@ -7,6 +7,6 @@ struct AI_alex
 	}
 	int turn (game_rules rules)
 	{
-		return *rules.rules.begin ();
+		return my_range.from;
 	}
 };
