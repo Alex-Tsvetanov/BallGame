@@ -47,6 +47,7 @@ public:
 		{
 			text ("Player %d lose!", player);
 			text ("Invalid turn. It get %d!", get);
+			exit (0);
 		}
 		number_of_balls -= get;
 		if (number_of_balls < 0)
