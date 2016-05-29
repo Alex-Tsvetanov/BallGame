@@ -20,6 +20,7 @@ struct game_rules
 {
 	int number_of_balls;
 	std::set <range> all_ranges;
+	vector < int > history;
 };
 
 struct game_core : private game_rules
@@ -64,6 +65,7 @@ public:
 			text ("Player %d win!", 3 - player);
 			exit (0);
 		}
+		history.push_back (get);
 	}
 	void text (std::string pattern, int player, int turn = (((unsigned int)(-1)) << 1)) const
 	{
@@ -81,6 +83,7 @@ public:
 	{
 		game_rules a;
 		a.number_of_balls = number_of_balls;
+		a.history = history;
 		a.all_ranges = all_ranges;
 		return a;
 	}
