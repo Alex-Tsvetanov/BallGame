@@ -8,7 +8,8 @@
 using namespace std;
 #include "structures.hpp"
 game_core game;
-#include "ball_game_AI_example.hpp"
+#include "AI/ball_game_AI_example.hpp"
+#include "AI/stasi1.hpp"
 
 int main (int argc, char *argv[])
 {
@@ -19,8 +20,8 @@ int main (int argc, char *argv[])
 		range (2, 4)
 	};
 	game.set_ranges (allowed_ranges).set_balls (5);
-	AI_alex player1;
-	AI_alex player2;
+	AI_return1 player1;
+	AI_stasi player2;
 	player1.choice (game.get_rules ());
 	player2.choice (game.get_rules ());
 	while (true)

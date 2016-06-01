@@ -1,4 +1,4 @@
-struct AI_alex
+struct AI_return_1
 {
 	range my_range;
 	void choice (game_rules rules)
