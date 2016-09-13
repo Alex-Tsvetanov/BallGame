@@ -74,8 +74,8 @@ public:
 		n = sprintf (buffer, pattern.c_str (), player, turn);
 		std::string ans (buffer, buffer + n);
 		cout << ans << "\n ----------------------------------- \n";
-		//Gtk::MessageDialog msg (ans.c_str ());
-		//msg.run();
+		Gtk::MessageDialog msg (ans.c_str ());
+		msg.run();
 
 		return ;
 	}

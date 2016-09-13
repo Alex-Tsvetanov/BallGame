@@ -7,6 +7,8 @@ struct AI_return_1
 	}
 	int turn (game_rules rules)
 	{
-		return my_range.from;
+		int a;
+		std::cin >> a;
+		return a;
 	}
 };

@@ -1,5 +1,5 @@
 #include <iostream>
-//#include <gtkmm.h>
+#include <gtkmm.h>
 #include <set>
 #include <vector>
 #include <stdlib.h>
@@ -13,15 +13,16 @@ game_core game;
 
 int main (int argc, char *argv[])
 {
-	//Gtk::Main app(argc, argv);
+	Gtk::Main app(argc, argv);
 	vector <range> allowed_ranges = 
 	{
 		range (1, 2),
 		range (2, 4)
 	};
 	game.set_ranges (allowed_ranges).set_balls (5);
-	AI_return1 player1;
-	AI_stasi player2;
+	AI_return_1 player1;
+	AI_return_1 player2;
+	//AI_stasi1 player2;
 	player1.choice (game.get_rules ());
 	player2.choice (game.get_rules ());
 	while (true)
